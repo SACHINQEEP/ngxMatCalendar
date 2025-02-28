@@ -1,0 +1,201 @@
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 5px;
+  padding: 10px;
+  border: 1px solid #000;
+}
+
+.calendar-weekday {
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  min-height: 20px;
+  cursor: pointer;
+  border: 1px solid #000;
+  font-weight: bolder;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 5px;
+  padding: 10px;
+  border: 1px solid #000;
+}
+
+.calendar-day {
+  text-align: left;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  min-height: 80px;
+  align-content: flex-start;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+
+.blank {
+  background-color: transparent;
+}
+
+.current-day {
+  background-color: #0000008e;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  align-content: center;
+  cursor: pointer;
+  border: 1px solid #000;
+  align-content: flex-start;
+}
+
+.header {
+  padding: 5px;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-content,
+.right-content {
+  padding: 10px;
+}
+
+.arrow-prev,
+.arrow-next,
+.current-month {
+  /* padding: 5px; */
+  font-weight: bold;
+  border: 2px solid #000;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+}
+
+.arrow-prev,
+.month-dropdown,
+.arrow-next {
+  margin-right: 2px;
+}
+
+
+.current-month {
+  font-weight: bold;
+  padding: 10px;
+}
+
+.month-dropdown,
+.filter-dropdown {
+  font-weight: bold;
+  border: 2px solid #000;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+}
+
+.datepicker {
+  background: #000;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 200px;
+  position: relative;
+}
+
+.datepicker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  /* padding: 5px 10px; */
+  /* background: #3a3a3a; */
+  border-radius: 6px;
+}
+
+.datepicker-header span {
+  font-size: 14px;
+}
+
+.month-grid {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 10px 5px;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background: #000;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.view-options-grid {
+  display: none;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 8px;
+  padding: 10px 5px;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background: #000;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.month {
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.month:hover {
+  background: #fff;
+  color: #000;
+}
+
+.selected {
+  background: #fff;
+  color: #000;
+}
+
+.datepicker.active .month-grid {
+  display: grid;
+  width: -webkit-max-content;
+}
+
+.datepicker.active .view-options-grid {
+  display: grid;
+  width: -webkit-max-content;
+}
+
+.arrow {
+  position: absolute;
+  top: -8px;
+  left: 10%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #0d0d0d;
+}
+
+.view-arrow {
+  position: absolute;
+  top: -8px;
+  left: 30%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #0d0d0d;
+}

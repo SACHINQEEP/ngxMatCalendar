@@ -1,0 +1,70 @@
+<!-- Days of the week header (Sun, Mon, Tue, etc.) -->
+<div style="padding: 5px;">
+  <div class="header">
+    <div class="left-content" style="display: flex; align-items: center;">
+      <div>
+        <span class="arrow-prev" (click)="handlePrevMonth()">&lt;</span>
+        <span class="arrow-next" (click)="handleNextMonth()">&gt;</span>
+      </div>
+
+      <div class="datepicker current-month" (click)="toggleDatePicker()" [ngClass]="{ 'active': isOpen }">
+        <div class="datepicker-header">
+          <span>{{ currentMonthName }} {{ currentYear }} &#9660;</span>
+        </div>
+
+        <div class="month-grid">
+          <div class="arrow"></div>
+          <div *ngFor="let month of monthsOfTheYear and let index = index" class="month" [ngClass]="{ 'selected': index === currentMonth }" (click)="onMonthChange(index)">
+            {{ month }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-content" style="display: flex; align-items: center;">
+      <div class="datepicker month-dropdown" (click)="toggleMonthPicker()" [ngClass]="{ 'active': isMonthPickerOpen }">
+        <div class="datepicker-header">
+          <span>Month &#9660;</span>
+        </div>
+
+        <div class="view-options-grid">
+          <div class="view-arrow"></div>
+          <div *ngFor="let view of viewOptions and let index = index" class="month" [ngClass]="{ 'selected': index === selectedView }">
+            {{ view }}
+          </div>
+        </div>
+      </div>
+
+      <div class="datepicker filter-dropdown" (click)="toggleFilter()" [ngClass]="{ 'active': isFilterOpen }">
+        <div class="datepicker-header">
+          <span>Filter &#9660;</span>
+        </div>
+
+        <div class="month-grid">
+          <div class="arrow"></div>
+          <div *ngFor="let month of monthsOfTheYear and let index = index" class="month" [ngClass]="{ 'selected': index === currentMonth }">
+            {{ month }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendar Weekdays -->
+  <div class="calendar-weekdays">
+    <span *ngFor="let day of daysOfTheWeek" class="calendar-weekday">{{ day }}</span>
+  </div>
+
+  <!-- Calendar Days -->
+  <div class="calendar-days">
+    <!-- Blank spaces before 1st day -->
+    <div *ngFor="let blank of [].constructor(firstDayOfWeek)">
+      <div class="calendar-day blank"></div>
+    </div>
+
+    <!-- Calendar Days -->
+    <div *ngFor="let day of daysInMonth" class="calendar-day" [class.current-day]="day === currentDay" (click)="handleCalenderEvent(day)">
+      {{ day }}
+    </div>
+  </div>
+</div>

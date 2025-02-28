@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NpxCalendarComponent } from "npx-calendar";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [NpxCalendarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
