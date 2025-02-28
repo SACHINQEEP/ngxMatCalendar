@@ -125,15 +125,39 @@ export class CalendarComponent {
     this.generateCalender();
   }
 
+  /**
+   * Toggle the date picker dropdown.
+   *
+   * This method is called when the current month button is clicked. It toggles the
+   * {@link isOpen} property, which determines whether the date picker dropdown
+   * is visible or not.
+   */
   toggleDatePicker() {
+    // Toggle the date picker dropdown
     this.isOpen = !this.isOpen;
   }
 
-  toggleMonthPicker() {
+  /**
+   * Toggle the month picker dropdown.
+   *
+   * This method is called when the month button is clicked. It toggles the
+   * {@link isMonthPickerOpen} property, which determines whether the month
+   * picker dropdown is visible or not.
+   */
+  toggleMonthPicker(): void {
+    // Toggle the month picker dropdown
     this.isMonthPickerOpen = !this.isMonthPickerOpen;
   }
 
+  /**
+   * Toggle the filter dropdown.
+   *
+   * This method is called when the filter button is clicked. It toggles the
+   * {@link isFilterOpen} property, which determines whether the filter dropdown
+   * is visible or not.
+   */
   toggleFilter() {
+    // Toggle the filter dropdown
     this.isFilterOpen = !this.isFilterOpen
   }
 
