@@ -68,9 +68,12 @@
         {{ day }}
       </div>
       <div *ngFor="let eventDetails of calendar_events">
-        <div class="events" *ngIf="eventDetails.day === day">
-          <div *ngFor="let event of eventDetails.events">
-            {{ event.title }} - {{ event.time }}
+        <div *ngIf="eventDetails.day === day">
+          <div *ngFor="let event of eventDetails.events and let index = index">
+            <span class="events" *ngIf="index < 2">
+              {{ event.title }} - {{ event.time }}
+            </span>
+            <div class="extra-events" *ngIf="index===2">+{{ eventDetails.events.length - 2 }}</div>
           </div>
         </div>
       </div>

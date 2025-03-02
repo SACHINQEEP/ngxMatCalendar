@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CalendarEvent } from '../../interface/calendar.interface';
 
 
@@ -29,7 +29,9 @@ export class CalendarComponent {
   public isMonthPickerOpen: boolean = false;
   public isFilterOpen: boolean = false;
   public selectedView: number = 0;
-  public calendar_events: CalendarEvent[] = [];
+  // public calendar_events: CalendarEvent[] = [];
+
+  @Input() public calendar_events: CalendarEvent[] = [];
 
   constructor() { }
 
@@ -42,26 +44,6 @@ export class CalendarComponent {
   ngOnInit(): void {
     this.currentMonth = new Date().getMonth();
     this.currentYear = new Date().getFullYear();
-    this.calendar_events = [
-      {
-        day: 1,
-        events: [
-          {
-            time: '11:00 AM',
-            title: 'TPI Daily Meeting'
-          }
-        ]
-      },
-      {
-        day: 2,
-        events: [
-          {
-            time: '11:00 AM',
-            title: 'TPI Daily Meeting'
-          }
-        ]
-      }
-    ];
 
     this.generateCalender();
   }
