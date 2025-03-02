@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CalendarEvent } from '../../interface/calendar.interface';
+
+
 
 @Component({
   selector: 'lib-calendar',
@@ -26,7 +29,7 @@ export class CalendarComponent {
   public isMonthPickerOpen: boolean = false;
   public isFilterOpen: boolean = false;
   public selectedView: number = 0;
-  public calendar_events: any[] = [];
+  public calendar_events: CalendarEvent[] = [];
 
   constructor() { }
 
