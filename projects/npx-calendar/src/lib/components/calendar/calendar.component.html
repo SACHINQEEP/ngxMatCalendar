@@ -64,7 +64,16 @@
 
     <!-- Calendar Days -->
     <div *ngFor="let day of daysInMonth" class="calendar-day" [class.current-day]="day === currentDay" (click)="handleCalenderEvent(day)">
-      {{ day }}
+      <div style="font-weight: bolder;">
+        {{ day }}
+      </div>
+      <div *ngFor="let eventDetails of calendar_events">
+        <div class="events" *ngIf="eventDetails.day === day">
+          <div *ngFor="let event of eventDetails.events">
+            {{ event.title }} - {{ event.time }}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
