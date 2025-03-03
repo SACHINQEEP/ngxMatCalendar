@@ -29,7 +29,6 @@ export class CalendarComponent {
   public isMonthPickerOpen: boolean = false;
   public isFilterOpen: boolean = false;
   public selectedView: number = 0;
-  // public calendar_events: CalendarEvent[] = [];
 
   @Input() public calendar_events: CalendarEvent[] = [];
 

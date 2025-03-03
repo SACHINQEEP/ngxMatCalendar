@@ -1,8 +1,13 @@
 
 
 export interface CalendarEvent {
+  month: number;
+  list: CalendarEventList[];
+}
+
+interface CalendarEventList {
   day: number;
-  events: CalendarEventDetails[];
+  events: Array<CalendarEventDetails>;
 }
 
 interface CalendarEventDetails {
