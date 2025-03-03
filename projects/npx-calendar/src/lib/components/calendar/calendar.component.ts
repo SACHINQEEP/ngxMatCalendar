@@ -174,7 +174,7 @@ export class CalendarComponent {
    * {@link generateCalender}.
    *
    * @param month The new month (0-11, January-December).
-   */
+¸¸¸¸¸¸¸   */
   public onMonthChange(month: number): void {
     // Update the current month
     this.currentMonth = month;
@@ -185,5 +185,6 @@ export class CalendarComponent {
     // Regenerate the calender with the new month
     this.generateCalender();
   }
+
 
 }
