@@ -109,7 +109,10 @@
 <div #popover class="popover" [ngClass]="{ 'show': isPopoverOpen }">
   <div class="view-arrow-popover"></div>
   <div class="popover-content">
-    <h3>{{weekDay?.slice(0, 3)}},&nbsp;{{currentMonthName.slice(0, 3)}}&nbsp;{{selectedDay}}</h3>
+    <div style="border-bottom: 1px solid #000; margin-bottom: 5px;">
+      <h3>{{weekDay?.slice(0, 3)}},&nbsp;{{currentMonthName.slice(0, 3)}}&nbsp;{{selectedDay}}</h3>
+    </div>
+
     <div>
       <h1>{{ selectedEventDetail.title }}</h1>
     </div>
