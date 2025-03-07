@@ -29,6 +29,8 @@ export class CalendarComponent {
   public isMonthPickerOpen: boolean = false;
   public isFilterOpen: boolean = false;
   public selectedView: number = 0;
+  public isOffCanvasOpen = false;
+  public weekDay: string | null = null;
 
   @Input() public calendar_events: CalendarEvent[] = [];
 
@@ -184,6 +186,42 @@ export class CalendarComponent {
 
     // Regenerate the calender with the new month
     this.generateCalender();
+  }
+
+  /**
+   * Open the off-canvas menu.
+   *
+   * This method is called when a day is clicked in the calendar. It will open the
+   * off-canvas menu and set the week day label to the name of the day of the week
+   * of the selected date.
+   *
+   * @param day The day of the month that was clicked (1-31).
+   */
+  openOffCanvas(day: number): void {
+    // Create a new date object for the selected date
+    const date = new Date(this.currentYear, this.currentMonth, day);
+
+    // Get the day of the week of the selected date
+    const dayOfWeek = date.getDay();
+
+    // Get the name of the day of the week of the selected date
+    this.weekDay = this.daysOfTheWeek[dayOfWeek];
+
+    // Toggle the off-canvas menu
+    this.isOffCanvasOpen = !this.isOffCanvasOpen;
+  }
+
+  /**
+   * Close the off-canvas menu.
+   *
+   * This method is called when the close button is clicked in the off-canvas
+   * menu. It sets the {@link isOffCanvasOpen} property to false, which will
+   * hide the off-canvas menu.
+   */
+  closeOffCanvas(): void {
+    // Set the isOffCanvasOpen property to false, which will hide the off-canvas
+    // menu.
+    this.isOffCanvasOpen = false;
   }
 
 
