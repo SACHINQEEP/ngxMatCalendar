@@ -39,6 +39,14 @@ export class CalendarComponent {
   public weekDay: string | null = null;
   public selectedDay: number = 0;
   public selectedDayEvents: CalendarEventDetails[] = [];
+  public selectedEventDetail: CalendarEventDetails = {
+    title: '',
+    time: '',
+    description: '',
+    start_time: '',
+    end_time: '',
+    style: ''
+  };
 
   @Input() public calendar_events: CalendarEvent[] = [];
 
@@ -66,28 +74,20 @@ export class CalendarComponent {
    * It is called on component initialization.
    */
   private generateCalender() {
-    // Get the current day of the month (1-31)
     this.currentDay = new Date().getDate();
 
-    // Get the current month name (January-December)
     this.currentMonthName = this.monthsOfTheYear[this.currentMonth];
 
-    // Get the current year
     this.currentYearName = this.currentYear.toString();
 
-    // Set the current date
     this.currentDate = this.currentDay + ' ' + this.currentMonthName + ' ' + this.currentYearName;
 
-    // Get the first day of the week (0-6, Sunday-Saturday)
     this.firstDayOfWeek = new Date(this.currentYear, this.currentMonth, 1).getDay();
 
-    // Get the last day of the month (28-31)
     const daysInMonth = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
 
-    // Initialize the array of days in the month
     this.daysInMonth = [];
 
-    // Fill the array of days in the month
     for (let i = 1; i <= daysInMonth; i++) {
       this.daysInMonth.push(i);
     }
@@ -106,8 +106,6 @@ export class CalendarComponent {
    * If the current month is December (11), we should increment the current year.
    */
   public handleNextMonth(): void {
-    // If the current month is December (11), increment the current year and reset the current month to January (0).
-    // Otherwise, just increment the current month.
     if (this.currentMonth === 11) {
       this.currentYear++;
       this.currentMonth = 0;
@@ -115,7 +113,6 @@ export class CalendarComponent {
       this.currentMonth++;
     }
 
-    // Generate the calender again with the new month.
     this.generateCalender();
   }
 
@@ -128,15 +125,9 @@ export class CalendarComponent {
    * If the current month is January (0), we should decrement the current year.
    */
   public handlePrevMonth() {
-    // Subtract one from the current month, but wrap around from December to January.
-    // We use the modulo operator to get the remainder of the division of the current
-    // month by 12. This will wrap around from 11 to 0.
     this.currentMonth = (this.currentMonth - 1 + 12) % 12;
-
-    // If the previous month is December (11), decrement the current year.
     if (this.currentMonth === 11) this.currentYear--;
 
-    // Generate the calender again with the new month.
     this.generateCalender();
   }
 
@@ -148,7 +139,6 @@ export class CalendarComponent {
    * is visible or not.
    */
   toggleDatePicker() {
-    // Toggle the date picker dropdown
     this.isOpen = !this.isOpen;
   }
 
@@ -160,7 +150,6 @@ export class CalendarComponent {
    * picker dropdown is visible or not.
    */
   toggleMonthPicker(): void {
-    // Toggle the month picker dropdown
     this.isMonthPickerOpen = !this.isMonthPickerOpen;
   }
 
@@ -172,7 +161,6 @@ export class CalendarComponent {
    * is visible or not.
    */
   toggleFilter() {
-    // Toggle the filter dropdown
     this.isFilterOpen = !this.isFilterOpen
   }
 
@@ -186,13 +174,9 @@ export class CalendarComponent {
    * @param month The new month (0-11, January-December).
 ¸¸¸¸¸¸¸   */
   public onMonthChange(month: number): void {
-    // Update the current month
     this.currentMonth = month;
-
-    // Close the month dropdown
     this.isOpen = false;
 
-    // Regenerate the calender with the new month
     this.generateCalender();
   }
 
@@ -207,22 +191,12 @@ export class CalendarComponent {
    * @param event The list of events associated with the day that was clicked.
    */
   openOffCanvas(day: number, event: CalendarEventDetails[]): void {
-    // Save the day that was clicked
     this.selectedDay = day;
-
-    // Create a new date object for the selected date
     const date = new Date(this.currentYear, this.currentMonth, day);
-
-    // Get the day of the week of the selected date
     const dayOfWeek = date.getDay();
-
-    // Get the name of the day of the week of the selected date
     this.weekDay = this.daysOfTheWeek[dayOfWeek];
-
-    // Save the events associated with the day that was clicked
     this.selectedDayEvents = event;
 
-    // Toggle the off-canvas menu
     this.isOffCanvasOpen = !this.isOffCanvasOpen;
     this.isPopoverOpen = false;
   }
@@ -235,32 +209,59 @@ export class CalendarComponent {
    * hide the off-canvas menu.
    */
   closeOffCanvas(): void {
-    // Set the isOffCanvasOpen property to false, which will hide the off-canvas
-    // menu.
     this.isOffCanvasOpen = false;
   }
 
 
 
-  openPopover(event: MouseEvent, day: number): any {
+  /**
+   * Opens the popover that displays the events for the selected day.
+   *
+   * This method is called when a day is clicked in the calendar. It will open the
+   * popover and position it at the location of the click event.
+   *
+   * @param event The mouse event that triggered this method.
+   * @param day The day of the month that was clicked (1-31).
+   */
+  openPopover(event: MouseEvent, day: number, eventDetail: CalendarEventDetails): any {
+    this.selectedEventDetail = eventDetail;
+    this.selectedDay = day;
+    const date = new Date(this.currentYear, this.currentMonth, day);
+    const dayOfWeek = date.getDay();
+    this.weekDay = this.daysOfTheWeek[dayOfWeek];
     this.isPopoverOpen = true;
     this.popoverDay = day;
     this.closeOffCanvas();
-
     this.positionPopover(event);
   }
 
+  /**
+   * Position the popover at the location of the click event.
+   *
+   * This function is called by the openPopover method, which is called when a day
+   * is clicked in the calendar. It will position the popover at the location of the
+   * click event.
+   *
+   * This function will wait for the popover to render before positioning it. This
+   * is done with setTimeout and a 0ms delay. This ensures that the popover has
+   * rendered and its width and height are available.
+   *
+   * It will check if the popover is too close to the edge of the screen and if so,
+   * will reposition it so it doesn't go off the screen.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   positionPopover(event: MouseEvent) {
     setTimeout(() => {
       const popoverEl = this.popover.nativeElement;
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
+
       const popoverRect = popoverEl.getBoundingClientRect();
 
       let left = event.clientX;
       let top = event.clientY + 10; // Default below cursor
 
-      // Check for screen edges
       if (left + popoverRect.width > viewportWidth) {
         left = viewportWidth - popoverRect.width - 10;
       }
@@ -270,7 +271,7 @@ export class CalendarComponent {
 
       popoverEl.style.left = `${left}px`;
       popoverEl.style.top = `${top}px`;
-    });
+    }, 0);
   }
 
 
