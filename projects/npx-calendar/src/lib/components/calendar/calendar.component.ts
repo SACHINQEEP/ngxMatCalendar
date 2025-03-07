@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { CalendarEvent, CalendarEventDetails } from '../../interface/calendar.interface';
 import { StyleObjectPipe } from '../../pips/style-object.pipe';
 
@@ -12,6 +12,12 @@ import { StyleObjectPipe } from '../../pips/style-object.pipe';
   styleUrl: './calendar.component.css'
 })
 export class CalendarComponent {
+
+  @ViewChild('popover') popover!: ElementRef;
+  isPopoverOpen = false;
+  popoverDay: number | null = null;
+  popoverEvents: any[] = [];
+
   public daysOfTheWeek: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   public monthsOfTheYear: string[] = [
     "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
@@ -232,6 +238,44 @@ export class CalendarComponent {
     // Set the isOffCanvasOpen property to false, which will hide the off-canvas
     // menu.
     this.isOffCanvasOpen = false;
+  }
+
+
+
+  openPopover(event: MouseEvent, day: number): any {
+    this.isPopoverOpen = true;
+    this.popoverDay = day;
+
+    // Find events for the selected day
+    const dayEvents = this.calendar_events
+      .find(e => e.month - 1 === this.currentMonth)?.list
+      .find(list => list.day === day)?.events || [];
+    this.popoverEvents = dayEvents;
+
+    this.positionPopover(event);
+  }
+
+  positionPopover(event: MouseEvent) {
+    setTimeout(() => {
+      const popoverEl = this.popover.nativeElement;
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const popoverRect = popoverEl.getBoundingClientRect();
+
+      let left = event.clientX;
+      let top = event.clientY + 10; // Default below cursor
+
+      // Check for screen edges
+      if (left + popoverRect.width > viewportWidth) {
+        left = viewportWidth - popoverRect.width - 10;
+      }
+      if (top + popoverRect.height > viewportHeight) {
+        top = event.clientY - popoverRect.height - 10;
+      }
+
+      popoverEl.style.left = `${left}px`;
+      popoverEl.style.top = `${top}px`;
+    });
   }
 
 
