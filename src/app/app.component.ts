@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NpxCalendarComponent } from "npx-calendar";
+import events from './event.json';
 
 @Component({
   selector: 'app-root',
@@ -9,58 +10,5 @@ import { NpxCalendarComponent } from "npx-calendar";
 })
 export class AppComponent {
   title = 'ngxMatCalendar';
-  events = [
-    {
-      month: 3,
-      list: [
-        {
-          day: 1,
-          events: [
-            {
-              time: '11:00 AM',
-              title: 'TPI Daily Meeting'
-            },
-            {
-              time: '11:00 AM',
-              title: 'TPI Daily Meeting'
-            },
-            {
-              time: '11:00 AM',
-              title: 'TPI Daily Meeting'
-            },
-            {
-              time: '11:00 AM',
-              title: 'TPI Daily Meeting'
-            }
-          ]
-        },
-        {
-          day: 2,
-          events: [
-            {
-              time: '11:00 AM',
-              title: 'TPI Daily Meeting'
-            }
-          ]
-        },
-        {
-          day: 3,
-          events: [
-            {
-              time: '11:00 AM',
-              title: 'TPI Daily Meeting'
-            },
-            {
-              time: '11:00 AM',
-              title: 'TPI Daily Meeting'
-            },
-            {
-              time: '11:00 AM',
-              title: 'TPI Daily Meeting'
-            }
-          ]
-        }
-      ]
-    }
-  ];
+  events = events
 }

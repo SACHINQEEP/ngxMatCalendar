@@ -263,3 +263,27 @@
   font-size: 16px;
   border-radius: 5px;
 }
+
+
+.events-canvas {
+  padding: 2px;
+  border-radius: 5px;
+  margin: 5px 0;
+  font-size: small;
+  overflow: hidden;
+  min-height: 100px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  width: 100%;
+}
+
+.events-canvas:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.events:hover {
+  background-color: #000;
+  color: #fff;
+}

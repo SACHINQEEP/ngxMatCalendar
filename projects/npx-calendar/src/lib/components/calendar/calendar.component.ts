@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { CalendarEvent } from '../../interface/calendar.interface';
+import { CalendarEvent, CalendarEventDetails } from '../../interface/calendar.interface';
+import { StyleObjectPipe } from '../../pips/style-object.pipe';
 
 
 
 @Component({
   selector: 'lib-calendar',
-  imports: [CommonModule],
+  imports: [CommonModule, StyleObjectPipe],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
 })
@@ -31,6 +32,8 @@ export class CalendarComponent {
   public selectedView: number = 0;
   public isOffCanvasOpen = false;
   public weekDay: string | null = null;
+  public selectedDay: number = 0;
+  public selectedDayEvents: CalendarEventDetails[] = [];
 
   @Input() public calendar_events: CalendarEvent[] = [];
 
@@ -196,8 +199,12 @@ export class CalendarComponent {
    * of the selected date.
    *
    * @param day The day of the month that was clicked (1-31).
+   * @param event The list of events associated with the day that was clicked.
    */
-  openOffCanvas(day: number): void {
+  openOffCanvas(day: number, event: CalendarEventDetails[]): void {
+    // Save the day that was clicked
+    this.selectedDay = day;
+
     // Create a new date object for the selected date
     const date = new Date(this.currentYear, this.currentMonth, day);
 
@@ -206,6 +213,9 @@ export class CalendarComponent {
 
     // Get the name of the day of the week of the selected date
     this.weekDay = this.daysOfTheWeek[dayOfWeek];
+
+    // Save the events associated with the day that was clicked
+    this.selectedDayEvents = event;
 
     // Toggle the off-canvas menu
     this.isOffCanvasOpen = !this.isOffCanvasOpen;

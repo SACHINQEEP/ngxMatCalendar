@@ -1,0 +1,78 @@
+[
+  {
+    "month": 3,
+    "list": [
+      {
+        "day": 1,
+        "events": [
+          {
+            "time": "11:00 AM",
+            "title": "TPI Daily Meeting",
+            "start_time": "11:00 AM",
+            "end_time": "12:00 PM",
+            "description": "TPI Daily Meeting",
+            "style": "background-color: #001B4F; color: #fff;"
+          },
+          {
+            "time": "2:00 PM",
+            "title": "Angular Meeting",
+            "start_time": "2:00 PM",
+            "end_time": "3:00 PM",
+            "description": "Angular Meeting",
+            "style": "background-color: #1abc9c; color: #fff;"
+          },
+          {
+            "time": "4:00 PM",
+            "title": "React Meeting",
+            "start_time": "4:00 PM",
+            "end_time": "5:00 PM",
+            "description": "React Meeting",
+            "style": "background-color: #1abc9c; color: #fff;"
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "events": [
+          {
+            "time": "11:00 AM",
+            "title": "TPI Daily Meeting",
+            "start_time": "11:00 AM",
+            "end_time": "12:00 PM",
+            "description": "TPI Daily Meeting",
+            "style": "background-color: #1abc9c; color: #fff;"
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "events": [
+          {
+            "time": "11:00 AM",
+            "title": "TPI Daily Meeting",
+            "start_time": "11:00 AM",
+            "end_time": "12:00 PM",
+            "description": "TPI Daily Meeting",
+            "style": "background-color: #001B4F; color: #fff;"
+          },
+          {
+            "time": "2:00 PM",
+            "title": "Angular Meeting",
+            "start_time": "2:00 PM",
+            "end_time": "3:00 PM",
+            "description": "Angular Meeting",
+            "style": "background-color: #1abc9c; color: #fff;"
+          },
+          {
+            "time": "4:00 PM",
+            "title": "React Meeting",
+            "start_time": "4:00 PM",
+            "end_time": "5:00 PM",
+            "description": "React Meeting",
+            "style": "background-color: #001B4F; color: #fff;"
+          }
+        ]
+      }
+    ]
+  }
+]
