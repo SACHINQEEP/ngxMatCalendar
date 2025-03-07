@@ -186,7 +186,8 @@
   border-bottom: 8px solid #0d0d0d;
 }
 
-.view-arrow {
+.view-arrow,
+.view-arrow-popover {
   position: absolute;
   top: -8px;
   left: 30%;
@@ -196,6 +197,11 @@
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   border-bottom: 8px solid #0d0d0d;
+}
+
+
+.view-arrow-popover {
+  border-bottom: 8px solid #fff !important;
 }
 
 .events {

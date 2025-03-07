@@ -16,7 +16,6 @@ export class CalendarComponent {
   @ViewChild('popover') popover!: ElementRef;
   isPopoverOpen = false;
   popoverDay: number | null = null;
-  popoverEvents: any[] = [];
 
   public daysOfTheWeek: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   public monthsOfTheYear: string[] = [
@@ -225,6 +224,7 @@ export class CalendarComponent {
 
     // Toggle the off-canvas menu
     this.isOffCanvasOpen = !this.isOffCanvasOpen;
+    this.isPopoverOpen = false;
   }
 
   /**
@@ -245,12 +245,7 @@ export class CalendarComponent {
   openPopover(event: MouseEvent, day: number): any {
     this.isPopoverOpen = true;
     this.popoverDay = day;
-
-    // Find events for the selected day
-    const dayEvents = this.calendar_events
-      .find(e => e.month - 1 === this.currentMonth)?.list
-      .find(list => list.day === day)?.events || [];
-    this.popoverEvents = dayEvents;
+    this.closeOffCanvas();
 
     this.positionPopover(event);
   }
