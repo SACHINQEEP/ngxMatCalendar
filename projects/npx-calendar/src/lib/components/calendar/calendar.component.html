@@ -83,31 +83,30 @@
       </div>
     </div>
   </div>
-  <div class="off-canvas" [class.open]="isOffCanvasOpen">
-    <div style="margin: 20px 0; padding: 2px 0;">
-      <button class="close-btn" (click)="closeOffCanvas()">×</button>
-    </div>
+</div>
 
-    <div style="border-bottom: 1px solid #fff; margin-bottom: 5px;">
-      <h3>{{weekDay?.slice(0, 3)}},&nbsp;{{currentMonthName.slice(0, 3)}}&nbsp;{{selectedDay}}</h3>
-    </div>
+<div class="off-canvas" [class.open]="isOffCanvasOpen">
+  <div style="margin: 20px 0; padding: 2px 0;">
+    <button class="close-btn" (click)="closeOffCanvas()">×</button>
+  </div>
 
-    <div>
-      <div *ngIf="selectedDayEvents.length">
-        <div *ngFor="let event of selectedDayEvents">
-          <div class="events-canvas">
-            {{ event.title }} - {{ event.time }}
-          </div>
+  <div style="border-bottom: 1px solid #fff; margin-bottom: 5px;">
+    <h3>{{weekDay?.slice(0, 3)}},&nbsp;{{currentMonthName.slice(0, 3)}}&nbsp;{{selectedDay}}</h3>
+  </div>
+
+  <div>
+    <div *ngIf="selectedDayEvents.length">
+      <div *ngFor="let event of selectedDayEvents">
+        <div class="events-canvas">
+          {{ event.title }} - {{ event.time }}
         </div>
       </div>
     </div>
   </div>
-
-
 </div>
 
-<div #popover class="popover" [ngClass]="{ 'show': isPopoverOpen }">
-  <div class="view-arrow-popover"></div>
+<div #popover class="popover" [ngClass]="{ 'show': isPopoverOpen }" [ngStyle]="selectedEventDetail.style | styleObject">
+  <!-- <div class="view-arrow-popover"></div> -->
   <div class="popover-content">
     <div style="border-bottom: 1px solid #000; margin-bottom: 5px;">
       <h3>{{weekDay?.slice(0, 3)}},&nbsp;{{currentMonthName.slice(0, 3)}}&nbsp;{{selectedDay}}</h3>

@@ -1,63 +1,142 @@
 # NpxCalendar
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+## 🚀 Introduction
+A customizable and feature-rich calendar component for Angular applications.
 
-## Code scaffolding
+## 📖 Table of Contents
+- [NpxCalendar](#npxcalendar)
+  - [🚀 Introduction](#-introduction)
+  - [📖 Table of Contents](#-table-of-contents)
+  - [📦 Installation](#-installation)
+  - [🚀 Usage](#-usage)
+  - [⚙️ Configuration](#️-configuration)
+  - [📅 Events](#-events)
+  - [🎨 Styles](#-styles)
+  - [🔥 Examples](#-examples)
+  - [📜 API](#-api)
+  - [📌 Changelog](#-changelog)
+  - [📜 License](#-license)
+  - [🤝 Contributing](#-contributing)
+  - [✨ Authors](#-authors)
+  - [🙌 Acknowledgments](#-acknowledgments)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+## 📦 Installation
+To install the `npx-calendar` package, run the following command:
+```sh
+npm install npx-calendar
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🚀 Usage
+Import the `NpxCalendarModule` in your Angular module:
+```typescript
+import { NgModule } from '@angular/core';
+import { NpxCalendarModule } from 'npx-calendar';
 
-```bash
-ng generate --help
+@NgModule({
+  declarations: [AppComponent],
+  imports: [NpxCalendarModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
 ```
 
-## Building
-
-To build the library, run:
-
-```bash
-ng build npx-calendar
+Use the `npx-calendar` component in your template:
+```html
+<npx-calendar [events]="events"></npx-calendar>
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+## ⚙️ Configuration
+The `npx-calendar` component supports the following options:
 
-### Publishing the Library
+- **events**: Array of events to display with properties:
+  - `title`: Event title
+  - `time`: Event time
+  - `description`: Brief event description
+  - `start_time`: Event start time
+  - `end_time`: Event end time
+  - `style`: Custom CSS style for the event
+- **month**: Month to display (0-11, January-December)
+- **year**: Year to display
 
-Once the project is built, you can publish your library by following these steps:
+## 📅 Events
+The component emits the following events:
+- `dayClick`: Triggered when a day is clicked
+- `eventClick`: Triggered when an event is clicked
+- `monthChange`: Triggered when the month changes
+- `yearChange`: Triggered when the year changes
 
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/npx-calendar
-   ```
+## 🎨 Styles
+Default CSS classes for customization:
+- `npx-calendar`: Main container
+- `npx-calendar-header`: Calendar header
+- `npx-calendar-body`: Calendar body
+- `npx-calendar-day`: Individual day
+- `npx-calendar-event`: Event display
 
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
+## 🔥 Examples
+Usage example:
+```html
+<npx-calendar [events]="events" (dayClick)="handleDayClick($event)" (eventClick)="handleEventClick($event)"></npx-calendar>
+```
+```typescript
+import { Component } from '@angular/core';
 
-## Running unit tests
+@Component({
+  selector: 'app-example',
+  template: './example.component.html'
+})
+export class ExampleComponent {
+  events = [
+    {
+      title: 'Event 1',
+      time: '10:00 AM',
+      description: 'This is event 1',
+      start_time: '10:00 AM',
+      end_time: '11:00 AM',
+      style: 'background-color: #f0f0f0; color: #333;'
+    },
+    {
+      title: 'Event 2',
+      time: '2:00 PM',
+      description: 'This is event 2',
+      start_time: '2:00 PM',
+      end_time: '3:00 PM',
+      style: 'background-color: #f0f0f0; color: #333;'
+    }
+  ];
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+  handleDayClick(event) {
+    console.log('Day clicked:', event);
+  }
 
-```bash
-ng test
+  handleEventClick(event) {
+    console.log('Event clicked:', event);
+  }
+}
 ```
 
-## Running end-to-end tests
+## 📜 API
+The `npx-calendar` component provides:
+- `NpxCalendarComponent`: Main calendar component
+- `NpxCalendarService`: Calendar-related functionalities
+- `CalendarEvent`: Interface for a calendar event
+- `CalendarEventList`: Interface for a list of calendar events
 
-For end-to-end (e2e) testing, run:
+## 📌 Changelog
+- **1.0.0**: Initial release
+- **1.1.0**: Added event click support
+- **1.2.0**: Added month/year change support
 
-```bash
-ng e2e
-```
+## 📜 License
+This project is licensed under the MIT License.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🤝 Contributing
+We welcome contributions! Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-## Additional Resources
+## ✨ Authors
+Created by the **Codeium Team**.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🙌 Acknowledgments
+Special thanks to all contributors and supporters of `npx-calendar`. 🎉
+

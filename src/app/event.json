@@ -49,7 +49,7 @@
         "events": [
           {
             "time": "11:00 AM",
-            "title": "TPI Daily Meeting",
+            "title": "TPI Daily standup call",
             "start_time": "11:00 AM",
             "end_time": "12:00 PM",
             "description": "TPI Daily Meeting",

@@ -270,7 +270,7 @@ export class CalendarComponent {
       }
 
       popoverEl.style.left = `${left}px`;
-      popoverEl.style.top = `${top}px`;
+      popoverEl.style.top = `${top + 5}px`;
     }, 0);
   }
 

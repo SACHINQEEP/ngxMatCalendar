@@ -310,23 +310,3 @@
 .popover.show {
   display: block;
 }
-
-/* Popover Content */
-.popover-content {
-  font-size: 14px;
-}
-
-/* Events List */
-.popover-content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.popover-content li {
-  padding: 5px;
-  border-bottom: 1px solid #ddd;
-}
-
-.popover-content li:last-child {
-  border-bottom: none;
-}
