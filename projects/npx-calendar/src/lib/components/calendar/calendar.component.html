@@ -1,10 +1,10 @@
 <!-- Days of the week header (Sun, Mon, Tue, etc.) -->
 <div style="padding: 5px;">
-  <div class="header">
+  <div class="header" *ngIf="calendar_themes.show_header" [ngStyle]="calendar_themes.header_style ??  ''| styleObject">
     <div class="left-content" style="display: flex; align-items: center;">
-      <div>
-        <span class="arrow-prev" (click)="handlePrevMonth()">&lt;</span>
-        <span class="arrow-next" (click)="handleNextMonth()">&gt;</span>
+      <div *ngIf="calendar_themes.show_arrow">
+        <span class="arrow-prev" (click)="handlePrevMonth()" [ngStyle]="calendar_themes.arrow_style ?? ''| styleObject">&lt;</span>
+        <span class="arrow-next" (click)="handleNextMonth()" [ngStyle]="calendar_themes.arrow_style ?? ''| styleObject">&gt;</span>
       </div>
 
       <div class="datepicker current-month" (click)="toggleDatePicker()" [ngClass]="{ 'active': isOpen }">
@@ -12,7 +12,7 @@
           <span>{{ currentMonthName }} {{ currentYear }} &#9660;</span>
         </div>
 
-        <div class="month-grid">
+        <div class="month-grid" *ngIf="calendar_themes.show_month_picker">
           <div class="arrow"></div>
           <div *ngFor="let month of monthsOfTheYear and let index = index" class="month" [ngClass]="{ 'selected': index === currentMonth }" (click)="onMonthChange(index)">
             {{ month }}

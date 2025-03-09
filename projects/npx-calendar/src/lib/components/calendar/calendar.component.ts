@@ -3,7 +3,14 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { CalendarEvent, CalendarEventDetails } from '../../interface/calendar.interface';
 import { StyleObjectPipe } from '../../pips/style-object.pipe';
 
-
+interface CalendarThemes {
+  show_header: boolean;
+  header_style?: string;
+  show_arrow: boolean;
+  arrow_style?: string;
+  show_month_picker: boolean;
+  month_picker_style?: string;
+}
 
 @Component({
   selector: 'lib-calendar',
@@ -49,6 +56,11 @@ export class CalendarComponent {
   };
 
   @Input() public calendar_events: CalendarEvent[] = [];
+  @Input() public calendar_themes: CalendarThemes = {
+    show_header: true,
+    show_arrow: true,
+    show_month_picker: true,
+  }
 
   constructor() { }
 
