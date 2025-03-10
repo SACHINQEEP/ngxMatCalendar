@@ -21,21 +21,21 @@
       </div>
     </div>
 
-    <div class="right-content" style="display: flex; align-items: center;">
+    <div class="right-content" style="display: flex; align-items: center;" *ngIf="calendar_themes.show_calendar_view_filter">
       <div class="datepicker month-dropdown" (click)="toggleMonthPicker()" [ngClass]="{ 'active': isMonthPickerOpen }">
         <div class="datepicker-header">
-          <span>Month &#9660;</span>
+          <span>{{viewOptions[selectedView]}} &#9660;</span>
         </div>
 
         <div class="view-options-grid">
           <div class="view-arrow"></div>
-          <div *ngFor="let view of viewOptions and let index = index" class="month" [ngClass]="{ 'selected': index === selectedView }">
+          <div *ngFor="let view of viewOptions and let index = index" class="month" [ngClass]="{ 'selected': index === selectedView }" (click)="onViewChange(index)">
             {{ view }}
           </div>
         </div>
       </div>
 
-      <div class="datepicker filter-dropdown" (click)="toggleFilter()" [ngClass]="{ 'active': isFilterOpen }">
+      <!-- <div class="datepicker filter-dropdown" (click)="toggleFilter()" [ngClass]="{ 'active': isFilterOpen }">
         <div class="datepicker-header">
           <span>Filter &#9660;</span>
         </div>
@@ -46,7 +46,7 @@
             {{ month }}
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 

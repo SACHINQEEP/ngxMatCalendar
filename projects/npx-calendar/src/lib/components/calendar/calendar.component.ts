@@ -10,6 +10,8 @@ interface CalendarThemes {
   arrow_style?: string;
   show_month_picker: boolean;
   month_picker_style?: string;
+  show_calendar_view_filter: boolean;
+  calendar_view_filter_style?: string;
 }
 
 @Component({
@@ -60,6 +62,7 @@ export class CalendarComponent {
     show_header: true,
     show_arrow: true,
     show_month_picker: true,
+    show_calendar_view_filter: true
   }
 
   constructor() { }
@@ -284,6 +287,10 @@ export class CalendarComponent {
       popoverEl.style.left = `${left}px`;
       popoverEl.style.top = `${top + 5}px`;
     }, 0);
+  }
+
+  public onViewChange(view: number): void {
+    this.selectedView = view
   }
 
 
