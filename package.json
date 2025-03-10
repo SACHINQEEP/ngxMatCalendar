@@ -10,7 +10,9 @@
     "lib-lint": "ng lint npx-calendar",
     "test": "ng test",
     "serve:ssr:ngxMatCalendar": "node dist/ngx-mat-calendar/server/server.mjs",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "npm-publish": "npm publish --access public dist/ngx-mat-calendar",
+    "prod-build": "ng build npx-calendar --configuration production"
   },
   "private": true,
   "dependencies": {
