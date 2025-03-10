@@ -97,8 +97,11 @@
   <div>
     <div *ngIf="selectedDayEvents.length">
       <div *ngFor="let event of selectedDayEvents">
-        <div class="events-canvas">
-          {{ event.title }} - {{ event.time }}
+        <div class="events-canvas" [ngStyle]="event.style | styleObject">
+          <div style="margin: 5px 2px 5px 8px; font-size: larger;">
+            {{ event.title }} - {{ event.time }}
+          </div>
+
         </div>
       </div>
     </div>
