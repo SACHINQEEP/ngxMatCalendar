@@ -2,7 +2,7 @@
 
 ## 🚀 Introduction
 
-A customizable and feature-rich calendar component for Angular applications.
+`npx-calendar` is a powerful **Angular calendar component** that helps developers build **event calendars**, **date pickers**, and **schedulers** with ease.
 
 ## 📖 Table of Contents
 
@@ -50,7 +50,7 @@ export class AppModule {}
 Use the `npx-calendar` component in your template:
 
 ```html
-<npx-calendar [events]="events"></npx-calendar>
+<npx-calendar [events]="events" [options]="options"></npx-calendar>
 ```
 
 ## ⚙️ Configuration
@@ -64,6 +64,13 @@ The `npx-calendar` component supports the following options:
   - `start_time`: Event start time
   - `end_time`: Event end time
   - `style`: Custom CSS style for the event
+  - `attendees`: Array of attendees to display with properties:
+    - `name`: Attendee name
+    - `image`: Attendee image URL
+  - `location`: Event location
+  - `locationLink`: Event location link
+  - `category`: Category type of event
+  - `categoryColor`: Category colour for the event
 - **month**: Month to display (0-11, January-December)
 - **year**: Year to display
 
@@ -110,26 +117,158 @@ export class ExampleComponent {
           day: 1,
           events: [
             {
-              title: "Event 1",
-              time: "10:00 AM",
-              description: "This is event 1",
-              start_time: "10:00 AM",
-              end_time: "11:00 AM",
-              style: "background-color: #f0f0f0; color: #333;",
+              time: "11:00 AM",
+              title: "TPI Daily Meeting",
+              start_time: "11:00 AM",
+              end_time: "12:00 PM",
+              description: "TPI Daily Meeting",
+              style: "background-color: #001B4F; color: #fff;",
+              attendees: [
+                {
+                  name: "John Doe",
+                  image: "https://randomuser.me/api/portraits/men/1.jpg",
+                },
+              ],
+              location: "india",
+              locationLink: "https://www.google.com/maps/search/india",
+              category: "General",
+              categoryColor: "#1abc9c",
             },
             {
-              title: "Event 2",
               time: "2:00 PM",
-              description: "This is event 2",
+              title: "Angular Meeting",
               start_time: "2:00 PM",
               end_time: "3:00 PM",
-              style: "background-color: #f0f0f0; color: #333;",
+              description: "Angular Meeting",
+              style: "background-color: #1abc9c; color: #fff;",
+              attendees: [
+                {
+                  name: "John Doe",
+                  image: "https://randomuser.me/api/portraits/men/1.jpg",
+                },
+              ],
+              location: "india",
+              locationLink: "https://www.google.com/maps/search/india",
+              category: "General",
+              categoryColor: "#1abc9c",
+            },
+            {
+              time: "4:00 PM",
+              title: "React Meeting",
+              start_time: "4:00 PM",
+              end_time: "5:00 PM",
+              description: "React Meeting",
+              style: "background-color: #1abc9c; color: #fff;",
+              attendees: [
+                {
+                  name: "John Doe",
+                  image: "https://randomuser.me/api/portraits/men/1.jpg",
+                },
+              ],
+              location: "india",
+              locationLink: "https://www.google.com/maps/search/india",
+              category: "General",
+              categoryColor: "#1abc9c",
+            },
+          ],
+        },
+        {
+          day: 2,
+          events: [
+            {
+              time: "11:00 AM",
+              title: "TPI Daily Meeting",
+              start_time: "11:00 AM",
+              end_time: "12:00 PM",
+              description: "TPI Daily Meeting",
+              style: "background-color: #1abc9c; color: #fff;",
+              attendees: [
+                {
+                  name: "John Doe",
+                  image: "https://randomuser.me/api/portraits/men/1.jpg",
+                },
+              ],
+              location: "india",
+              locationLink: "https://www.google.com/maps/search/india",
+              category: "General",
+              categoryColor: "#1abc9c",
+            },
+          ],
+        },
+        {
+          day: 3,
+          events: [
+            {
+              time: "11:00 AM",
+              title: "TPI Daily standup call",
+              start_time: "11:00 AM",
+              end_time: "12:00 PM",
+              description: "TPI Daily Meeting",
+              style: "background-color: #001B4F; color: #fff;",
+              attendees: [
+                {
+                  name: "John Doe",
+                  image: "https://randomuser.me/api/portraits/men/1.jpg",
+                },
+              ],
+              location: "india",
+              locationLink: "https://www.google.com/maps/search/india",
+              category: "General",
+              categoryColor: "#1abc9c",
+            },
+            {
+              time: "2:00 PM",
+              title: "Angular Meeting",
+              start_time: "2:00 PM",
+              end_time: "3:00 PM",
+              description: "Angular Meeting",
+              style: "background-color: #1abc9c; color: #fff;",
+              attendees: [
+                {
+                  name: "John Doe",
+                  image: "https://randomuser.me/api/portraits/men/1.jpg",
+                },
+              ],
+              location: "india",
+              locationLink: "https://www.google.com/maps/search/india",
+              category: "General",
+              categoryColor: "#1abc9c",
+            },
+            {
+              time: "4:00 PM",
+              title: "React Meeting",
+              start_time: "4:00 PM",
+              end_time: "5:00 PM",
+              description: "React Meeting",
+              style: "background-color: #001B4F; color: #fff;",
+              attendees: [
+                {
+                  name: "John Doe",
+                  image: "https://randomuser.me/api/portraits/men/1.jpg",
+                },
+              ],
+              location: "india",
+              locationLink: "https://www.google.com/maps/search/india",
+              category: "General",
+              categoryColor: "#1abc9c",
             },
           ],
         },
       ],
     },
   ];
+
+  options = {
+    show_header: true,
+    header_style: "background-color: #f0f0f0;",
+    show_arrow: true,
+    arrow_style: "color: #333;",
+    show_month_picker: true,
+    month_picker_style: "background-color: #f0f0f0;",
+    show_calendar_view_filter: true,
+    calendar_view_filter_style: "background-color: #f0f0f0;",
+    current_day_style: "background-color: #ccc;",
+  };
 }
 ```
 
@@ -144,9 +283,9 @@ The `npx-calendar` component provides:
 
 ## 📌 Changelog
 
-- **1.0.0**: Initial release
-- **1.1.0**: Added event click support
-- **1.2.0**: Added month/year change support
+- **0.0.1**: Initial release
+- **0.0.2**: Added event click support
+- **0.0.3**: Added event title, time, description, style, attendees, location, location link, category, and category color support
 
 ## 📜 License
 

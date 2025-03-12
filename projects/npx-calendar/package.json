@@ -1,6 +1,7 @@
 {
   "name": "npx-calendar",
   "version": "0.0.2",
+  "description": "A customizable and feature-rich calendar component for Angular applications.",
   "peerDependencies": {
     "@angular/common": "^19.2.0",
     "@angular/core": "^19.2.0"
@@ -8,5 +9,17 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "keywords": [
+    "angular",
+    "calendar",
+    "angular-calendar",
+    "event-calendar",
+    "scheduler",
+    "datepicker",
+    "calendar-component",
+    "appointment-scheduler"
+  ],
+  "author": "Sachin Patel",
+  "license": "MIT"
 }
