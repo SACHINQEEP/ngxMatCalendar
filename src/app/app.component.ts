@@ -11,7 +11,7 @@ import events from './event.json';
 export class AppComponent {
   title = 'ngxMatCalendar';
   events = events
-  calendar_themes = {
+  options = {
     show_header: true,
     show_arrow: true,
     show_month_picker: true,
