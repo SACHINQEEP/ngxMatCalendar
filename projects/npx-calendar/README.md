@@ -20,6 +20,7 @@
   - [📜 License](#-license)
   - [🤝 Contributing](#-contributing)
   - [✨ Authors](#-authors)
+  - [Report Issues](#report-issues)
   - [🙌 Acknowledgments](#-acknowledgments)
 
 ## 📦 Installation
@@ -298,6 +299,10 @@ We welcome contributions! Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for
 ## ✨ Authors
 
 Created by the **Sachin Patel**.
+
+## Report Issues
+
+Found a bug? 🐛 Please open an issue [here](https://github.com/SACHINQEEP//issues).
 
 ## 🙌 Acknowledgments
 

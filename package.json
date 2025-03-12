@@ -14,6 +14,9 @@
     "npm-publish": "npm publish --access public dist/ngx-calendar",
     "prod-build": "ng build npx-calendar --configuration production"
   },
+  "bugs": {
+    "url": "https://github.com/SACHINQEEP/ngxMatCalendart/issues"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.1.0",
