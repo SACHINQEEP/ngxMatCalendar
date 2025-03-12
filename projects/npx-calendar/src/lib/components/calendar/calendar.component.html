@@ -59,7 +59,7 @@
   <div class="calendar-days">
     <!-- Blank spaces before 1st day -->
     <div *ngFor="let blank of [].constructor(firstDayOfWeek)">
-      <div class="calendar-day blank"></div>
+      <div></div>
     </div>
 
     <!-- Calendar Days -->
@@ -85,38 +85,108 @@
   </div>
 </div>
 
+
 <div class="off-canvas" [class.open]="isOffCanvasOpen">
-  <div style="margin: 20px 0; padding: 2px 0;">
+  <div class="off-canvas-header">
+    <h3>{{ weekDay?.slice(0, 3) }}, {{ currentMonthName.slice(0, 3) }} {{ selectedDay }}</h3>
     <button class="close-btn" (click)="closeOffCanvas()">×</button>
   </div>
 
-  <div style="border-bottom: 1px solid #fff; margin-bottom: 5px;">
-    <h3>{{weekDay?.slice(0, 3)}},&nbsp;{{currentMonthName.slice(0, 3)}}&nbsp;{{selectedDay}}</h3>
-  </div>
+  <div class="off-canvas-content">
+    <div *ngIf="selectedDayEvents.length; else noEvents">
+      <div *ngFor="let event of selectedDayEvents" class="event-card" [ngStyle]="event.style | styleObject">
+        <div class="event-header">
+          <h3 class="event-title">{{ event.title }}</h3>
+        </div>
 
-  <div>
-    <div *ngIf="selectedDayEvents.length">
-      <div *ngFor="let event of selectedDayEvents">
-        <div class="events-canvas" [ngStyle]="event.style | styleObject">
-          <div style="margin: 5px 2px 5px 8px; font-size: larger;">
-            {{ event.title }} - {{ event.time }}
+        <div class="event-category" [ngStyle]="{'background': event.categoryColor}">
+          {{ event.category || 'General' }}
+        </div>
+
+        <div class="popover-section">
+          <i class="icon-calendar"></i>
+          <p>{{ selectedDay }} {{ currentMonthName }} {{ weekDay?.slice(0, 3) }},
+            {{ selectedEventDetail.start_time }} - {{ selectedEventDetail.end_time }}</p>
+        </div>
+
+        <div class="event-section">
+          <i class="icon-location"></i>
+          <p>
+            {{ selectedEventDetail.location}}
+          </p>
+        </div>
+
+        <div class="event-section attendees" *ngIf="event.attendees?.length">
+          <i class="icon-users"></i>
+          <div class="attendees-list">
+            <div class="attendee" *ngFor="let attendee of event.attendees.slice(0, 3)">
+              <img [src]="attendee.image" [alt]="attendee.name">
+              <span class="attendee-name">{{ attendee.name }}</span>
+            </div>
+            <span *ngIf="event.attendees.length > 3" class="more-attendees">
+              +{{ event.attendees.length - 3 }} more
+            </span>
           </div>
+        </div>
 
+        <div class="event-section">
+          <i class="icon-info"></i>
+          <p>{{ event.description }}</p>
         </div>
       </div>
     </div>
+
+    <ng-template #noEvents>
+      <p class="no-events">No events scheduled for this day.</p>
+    </ng-template>
   </div>
 </div>
 
-<div #popover class="popover" [ngClass]="{ 'show': isPopoverOpen }" [ngStyle]="selectedEventDetail.style | styleObject">
-  <!-- <div class="view-arrow-popover"></div> -->
+
+
+
+
+<div #popover class="popover-container" [ngClass]="{ 'show': isPopoverOpen }" [ngStyle]="selectedEventDetail.style | styleObject">
   <div class="popover-content">
-    <div style="border-bottom: 1px solid #000; margin-bottom: 5px;">
-      <h3>{{weekDay?.slice(0, 3)}},&nbsp;{{currentMonthName.slice(0, 3)}}&nbsp;{{selectedDay}}</h3>
+    <h3 class="popover-title">
+      {{ selectedEventDetail.title }}
+    </h3>
+
+    <div class="event-category" [ngStyle]="{'background': selectedEventDetail.categoryColor}">
+      {{ selectedEventDetail.category || 'General' }}
     </div>
 
-    <div>
-      <h1>{{ selectedEventDetail.title }}</h1>
+    <div class="popover-section">
+      <i class="icon-calendar"></i>
+      <p>{{ selectedDay }} {{ currentMonthName }} {{ weekDay?.slice(0, 3) }},
+        {{ selectedEventDetail.start_time }} - {{ selectedEventDetail.end_time }}</p>
     </div>
+
+    <div class="event-section" *ngIf="selectedEventDetail.location">
+      <i class="icon-location"></i>
+      <p>
+        {{ selectedEventDetail.location }}
+      </p>
+    </div>
+
+    <div class="event-section attendees" *ngIf="selectedEventDetail.attendees?.length">
+      <i class="icon-users"></i>
+      <div class="attendees-list">
+        <div class="attendee" *ngFor="let attendee of selectedEventDetail.attendees.slice(0, 3)">
+          <img [src]="attendee.image" [alt]="attendee.name">
+          <span class="attendee-name">{{ attendee.name }}</span>
+        </div>
+        <span *ngIf="selectedEventDetail.attendees.length > 3" class="more-attendees">
+          +{{ selectedEventDetail.attendees.length - 3 }} more
+        </span>
+      </div>
+    </div>
+
+    <div class="popover-section">
+      <i class="icon-info"></i>
+      <p>{{ selectedEventDetail.description }}</p>
+    </div>
+
+    <button class="close-btn" (click)="isPopoverOpen = false">✖</button>
   </div>
 </div>

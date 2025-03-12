@@ -1,18 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { CalendarEvent, CalendarEventDetails } from '../../interface/calendar.interface';
+import { CalendarEvent, CalendarEventDetails, CalendarThemes } from '../../interface/calendar.interface';
 import { StyleObjectPipe } from '../../pips/style-object.pipe';
 
-interface CalendarThemes {
-  show_header: boolean;
-  header_style?: string;
-  show_arrow: boolean;
-  arrow_style?: string;
-  show_month_picker: boolean;
-  month_picker_style?: string;
-  show_calendar_view_filter: boolean;
-  calendar_view_filter_style?: string;
-}
+
 
 @Component({
   selector: 'lib-calendar',
@@ -54,7 +45,12 @@ export class CalendarComponent {
     description: '',
     start_time: '',
     end_time: '',
-    style: ''
+    style: '',
+    attendees: [],
+    location: '',
+    locationLink: '',
+    category: '',
+    categoryColor: ''
   };
 
   @Input() public calendar_events: CalendarEvent[] = [];
@@ -65,7 +61,9 @@ export class CalendarComponent {
     show_calendar_view_filter: true
   }
 
-  constructor() { }
+  constructor() {
+    this.selectedEventDetail.categoryColor = '#ff0000';
+  }
 
   /**
    * Initialize the component.

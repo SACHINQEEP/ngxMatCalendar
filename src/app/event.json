@@ -11,7 +11,17 @@
             "start_time": "11:00 AM",
             "end_time": "12:00 PM",
             "description": "TPI Daily Meeting",
-            "style": "background-color: #001B4F; color: #fff;"
+            "style": "background-color: #001B4F; color: #fff;",
+            "attendees": [
+              {
+                "name": "John Doe",
+                "image": "https://randomuser.me/api/portraits/men/1.jpg"
+              }
+            ],
+            "location": "india",
+            "locationLink": "https://www.google.com/maps/search/india",
+            "category": "General",
+            "categoryColor": "#1abc9c"
           },
           {
             "time": "2:00 PM",
@@ -19,7 +29,17 @@
             "start_time": "2:00 PM",
             "end_time": "3:00 PM",
             "description": "Angular Meeting",
-            "style": "background-color: #1abc9c; color: #fff;"
+            "style": "background-color: #1abc9c; color: #fff;",
+            "attendees": [
+              {
+                "name": "John Doe",
+                "image": "https://randomuser.me/api/portraits/men/1.jpg"
+              }
+            ],
+            "location": "india",
+            "locationLink": "https://www.google.com/maps/search/india",
+            "category": "General",
+            "categoryColor": "#1abc9c"
           },
           {
             "time": "4:00 PM",
@@ -27,7 +47,17 @@
             "start_time": "4:00 PM",
             "end_time": "5:00 PM",
             "description": "React Meeting",
-            "style": "background-color: #1abc9c; color: #fff;"
+            "style": "background-color: #1abc9c; color: #fff;",
+            "attendees": [
+              {
+                "name": "John Doe",
+                "image": "https://randomuser.me/api/portraits/men/1.jpg"
+              }
+            ],
+            "location": "india",
+            "locationLink": "https://www.google.com/maps/search/india",
+            "category": "General",
+            "categoryColor": "#1abc9c"
           }
         ]
       },
@@ -40,7 +70,17 @@
             "start_time": "11:00 AM",
             "end_time": "12:00 PM",
             "description": "TPI Daily Meeting",
-            "style": "background-color: #1abc9c; color: #fff;"
+            "style": "background-color: #1abc9c; color: #fff;",
+            "attendees": [
+              {
+                "name": "John Doe",
+                "image": "https://randomuser.me/api/portraits/men/1.jpg"
+              }
+            ],
+            "location": "india",
+            "locationLink": "https://www.google.com/maps/search/india",
+            "category": "General",
+            "categoryColor": "#1abc9c"
           }
         ]
       },
@@ -53,7 +93,17 @@
             "start_time": "11:00 AM",
             "end_time": "12:00 PM",
             "description": "TPI Daily Meeting",
-            "style": "background-color: #001B4F; color: #fff;"
+            "style": "background-color: #001B4F; color: #fff;",
+            "attendees": [
+              {
+                "name": "John Doe",
+                "image": "https://randomuser.me/api/portraits/men/1.jpg"
+              }
+            ],
+            "location": "india",
+            "locationLink": "https://www.google.com/maps/search/india",
+            "category": "General",
+            "categoryColor": "#1abc9c"
           },
           {
             "time": "2:00 PM",
@@ -61,7 +111,17 @@
             "start_time": "2:00 PM",
             "end_time": "3:00 PM",
             "description": "Angular Meeting",
-            "style": "background-color: #1abc9c; color: #fff;"
+            "style": "background-color: #1abc9c; color: #fff;",
+            "attendees": [
+              {
+                "name": "John Doe",
+                "image": "https://randomuser.me/api/portraits/men/1.jpg"
+              }
+            ],
+            "location": "india",
+            "locationLink": "https://www.google.com/maps/search/india",
+            "category": "General",
+            "categoryColor": "#1abc9c"
           },
           {
             "time": "4:00 PM",
@@ -69,7 +129,17 @@
             "start_time": "4:00 PM",
             "end_time": "5:00 PM",
             "description": "React Meeting",
-            "style": "background-color: #001B4F; color: #fff;"
+            "style": "background-color: #001B4F; color: #fff;",
+            "attendees": [
+              {
+                "name": "John Doe",
+                "image": "https://randomuser.me/api/portraits/men/1.jpg"
+              }
+            ],
+            "location": "india",
+            "locationLink": "https://www.google.com/maps/search/india",
+            "category": "General",
+            "categoryColor": "#1abc9c"
           }
         ]
       }

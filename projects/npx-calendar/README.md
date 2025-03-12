@@ -32,15 +32,15 @@ npm install npx-calendar
 
 ## 🚀 Usage
 
-Import the `NpxCalendarModule` in your Angular module:
+Import the `NpxCalendarComponent` in your Angular module:
 
 ```typescript
 import { NgModule } from "@angular/core";
-import { NpxCalendarModule } from "npx-calendar";
+import { NpxCalendarComponent } from "npx-calendar";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [NpxCalendarModule],
+  imports: [NpxCalendarComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
