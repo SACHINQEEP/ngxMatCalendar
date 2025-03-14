@@ -1,5 +1,5 @@
 <!-- Days of the week header (Sun, Mon, Tue, etc.) -->
-<div style="padding: 5px;">
+<div class="calendar-container">
   <div class="header" *ngIf="calendar_themes.show_header" [ngStyle]="calendar_themes.header_style ??  ''| styleObject">
     <div class="left-content" style="display: flex; align-items: center;">
       <div *ngIf="calendar_themes.show_arrow">
@@ -83,8 +83,8 @@
       </div>
     </div>
   </div>
-</div>
 
+</div>
 
 <div class="off-canvas" [class.open]="isOffCanvasOpen">
   <div class="off-canvas-header">
