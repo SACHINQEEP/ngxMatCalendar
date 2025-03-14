@@ -99,7 +99,7 @@ Default CSS classes for customization:
 Usage example:
 
 ```html
-<npx-calendar [events]="events"></npx-calendar>
+<npx-calendar [events]="events" [options]="options"></npx-calendar>
 ```
 
 ```typescript
