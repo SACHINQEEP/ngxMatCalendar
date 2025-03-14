@@ -65,6 +65,7 @@ export class CalendarComponent {
 
   constructor(private elementRef: ElementRef) {
     this.selectedEventDetail.categoryColor = '#ff0000';
+    this.years = [];
 
     for (let i = 2020; i <= new Date().getFullYear() + 10; i++) {
       this.years.push(i);
@@ -187,11 +188,25 @@ export class CalendarComponent {
    * Handles the month change event.
    *
    * This method is called when a new month is selected from the month dropdown.
-   * It updates the current month and regenerates the calender by calling
-   * {@link generateCalender}.
+   * It is called automatically whenever the user selects a new month from the
+   * month dropdown.
+   *
+   * The purpose of this method is to update the current month and regenerate
+   * the calender. This is necessary because the calender is rendered based on the
+   * current month and year, so if the user changes the month, we need to update
+   * the calender to reflect the new month.
+   *
+   * The method takes a single argument, `month`, which is the new month to be
+   * selected (0-11, January-December).
+   *
+   * The method does the following:
+   *  1. It updates the current month by setting the `currentMonth` property to
+   *     the new month.
+   *  2. It closes the month dropdown by setting the `isOpen` property to false.
+   *  3. It regenerates the calender by calling the `generateCalender()` method.
    *
    * @param month The new month (0-11, January-December).
-¸¸¸¸¸¸¸   */
+   */
   public onMonthChange(month: number): void {
     this.currentMonth = month;
     this.isOpen = false;
@@ -199,12 +214,22 @@ export class CalendarComponent {
     this.generateCalender();
   }
 
+  /*************  ✨ Codeium Command 🌟  *************/
+  /**
+   * Handles the year change event.
+   *
+   * This method is called when a new year is selected from the year dropdown.
+   * It updates the current year and regenerates the calender by calling
+   * {@link generateCalender}.
+   *
+   * @param year The new year.
+   */
   public onYearChange(year: number): void {
     this.currentYear = year;
     this.isOpen = false;
-
     this.generateCalender();
   }
+  /******  a23a8126-489d-4240-8c98-4a4c397bedb5  *******/
 
   /**
    * Open the off-canvas menu.
@@ -300,26 +325,71 @@ export class CalendarComponent {
     }, 0);
   }
 
+  /**
+   * Called when the user changes the calendar view.
+   *
+   * This function is called when the user changes the calendar view by clicking on
+   * one of the view options in the top right corner of the calendar. The view
+   * options are "Month", "Week", and "Day".
+   *
+   * When this function is called, it will update the selectedView property to the
+   * index of the view that was selected.
+   *
+   * @param view The index of the view that was selected (0, 1, or 2).
+   */
   public onViewChange(view: number): void {
-    this.selectedView = view
+    this.selectedView = view;
   }
 
+  /**
+   * Toggle the year picker dropdown.
+   *
+   * This function is called when the year button is clicked. It will toggle the
+   * {@link showYearPicker} property, which determines whether the year picker
+   * dropdown is visible or not.
+   *
+   * Also, it will stop the event from propagating up the DOM tree, so that the
+   * event doesn't bubble up and cause the calendar to be closed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   public toggleYearPicker(event: Event): void {
     this.showYearPicker = !this.showYearPicker
     event.stopPropagation();
-    console.log("clicked")
   }
 
+  /**
+   * Handles the previous year button click event.
+   *
+   * This method is called when the previous year button is clicked. It will
+   * decrement the current year by one and regenerate the calender by calling
+   * {@link generateCalender}.
+   *
+   * It will also stop the event from propagating up the DOM tree, so that the
+   * event doesn't bubble up and cause the calendar to be closed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   public handlePrevYear(event: Event): void {
     event.stopPropagation();
-    this.currentYear = this.currentYear - 1;
-    this.generateCalender()
+    this.currentYear--;
+    this.generateCalender();
   }
 
+  /**
+   * Handles the next year button click event.
+   *
+   * This method is called when the next year button is clicked. It will
+   * increment the current year by one and regenerate the calender by calling
+   * {@link generateCalender}.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   public handleNextYear(event: Event): void {
     event.stopPropagation();
-    this.currentYear = this.currentYear + 1;
-    this.generateCalender()
+    this.currentYear++;
+
+    this.generateCalender();
   }
 
 
