@@ -14,9 +14,25 @@
 
         <div class="month-grid" *ngIf="calendar_themes.show_month_picker">
           <div class="arrow"></div>
-          <div *ngFor="let month of monthsOfTheYear and let index = index" class="month" [ngClass]="{ 'selected': index === currentMonth }" (click)="onMonthChange(index)">
-            {{ month }}
+          <div class="year-container">
+            <div class="year" (click)="toggleYearPicker($event)">{{ currentYear }}{{ showYearPicker ? '-' + years[years.length - 1] : '' }}</div>
+            <div class="year-filter-arrow" style="margin: 8px;">
+              <span class="year-arrow" (click)="handlePrevYear($event)">&uarr;</span>
+              <span class="year-arrow" style="margin-left:2px ;" (click)="handleNextYear($event)">&darr;</span>
+            </div>
           </div>
+          <div *ngFor="let month of monthsOfTheYear and let index = index">
+            <div *ngIf="!showYearPicker" class="month" [ngClass]="{ 'selected': index === currentMonth }" (click)="onMonthChange(index)">
+              {{ month }}
+            </div>
+          </div>
+
+          <div *ngFor="let year of years and let index = index" style="min-width: 120px;">
+            <div *ngIf="showYearPicker" class="month" [ngClass]="{ 'selected': index === currentMonth }" (click)="onYearChange(year)">
+              {{ year }}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { CalendarEvent, CalendarEventDetails, CalendarThemes } from '../../interface/calendar.interface';
 import { StyleObjectPipe } from '../../pips/style-object.pipe';
 
@@ -22,6 +22,7 @@ export class CalendarComponent {
     "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
   ];
 
+  public years: number[] = []
   public viewOptions: string[] = ["Month", "Work week", "Week", "Day"];
   public daysInMonth: number[] = [];
   public currentMonth: number = 0;
@@ -39,6 +40,7 @@ export class CalendarComponent {
   public weekDay: string | null = null;
   public selectedDay: number = 0;
   public selectedDayEvents: CalendarEventDetails[] = [];
+  public showYearPicker: boolean = false;
   public selectedEventDetail: CalendarEventDetails = {
     title: '',
     time: '',
@@ -61,8 +63,12 @@ export class CalendarComponent {
     show_calendar_view_filter: true
   }
 
-  constructor() {
+  constructor(private elementRef: ElementRef) {
     this.selectedEventDetail.categoryColor = '#ff0000';
+
+    for (let i = 2020; i <= new Date().getFullYear() + 10; i++) {
+      this.years.push(i);
+    }
   }
 
   /**
@@ -193,6 +199,13 @@ export class CalendarComponent {
     this.generateCalender();
   }
 
+  public onYearChange(year: number): void {
+    this.currentYear = year;
+    this.isOpen = false;
+
+    this.generateCalender();
+  }
+
   /**
    * Open the off-canvas menu.
    *
@@ -290,6 +303,26 @@ export class CalendarComponent {
   public onViewChange(view: number): void {
     this.selectedView = view
   }
+
+  public toggleYearPicker(event: Event): void {
+    this.showYearPicker = !this.showYearPicker
+    event.stopPropagation();
+    console.log("clicked")
+  }
+
+  public handlePrevYear(event: Event): void {
+    event.stopPropagation();
+    this.currentYear = this.currentYear - 1;
+    this.generateCalender()
+  }
+
+  public handleNextYear(event: Event): void {
+    event.stopPropagation();
+    this.currentYear = this.currentYear + 1;
+    this.generateCalender()
+  }
+
+
 
 
 }
