@@ -50,29 +50,24 @@
           </div>
         </div>
       </div>
-
-      <!-- <div class="datepicker filter-dropdown" (click)="toggleFilter()" [ngClass]="{ 'active': isFilterOpen }">
-        <div class="datepicker-header">
-          <span>Filter &#9660;</span>
-        </div>
-
-        <div class="month-grid">
-          <div class="arrow"></div>
-          <div *ngFor="let month of monthsOfTheYear and let index = index" class="month" [ngClass]="{ 'selected': index === currentMonth }">
-            {{ month }}
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 
   <!-- Calendar Weekdays -->
-  <div class="calendar-weekdays">
+  <div class="calendar-weekdays" *ngIf="viewOptions[selectedView] === 'Month'">
     <span *ngFor="let day of daysOfTheWeek" class="calendar-weekday">{{ day }}</span>
+  </div>
+  <div class="calendar-weekdays" *ngIf="viewOptions[selectedView] === 'Work week'">
+    <span *ngFor="let day of daysOfTheWeek and let index = index" class="calendar-weekday">
+      <div>
+        {{ day }}
+      </div>
+      {{currentWeekDays[index]}}
+    </span>
   </div>
 
   <!-- Calendar Days -->
-  <div class="calendar-days">
+  <div class="calendar-days" *ngIf="viewOptions[selectedView] === 'Month'">
     <!-- Blank spaces before 1st day -->
     <div *ngFor="let blank of [].constructor(firstDayOfWeek)">
       <div></div>
@@ -99,6 +94,30 @@
       </div>
     </div>
   </div>
+
+  <div class="calendar-days" style="display: flex; margin: 0;" *ngIf="viewOptions[selectedView] === 'Work week'">
+
+    <!-- Calendar Days -->
+    <div class="calendar-week-days" style="border: 1px solid #000;">
+      <div class="calendar-week-day" *ngFor="let day of currentWeekDays and let index=index">
+        <div *ngIf="index === 0">
+          <div class="time-slot" *ngFor="let hour of hours">
+            <div style=" height: 50%;">{{ hour }}</div>
+            <div style="border-top: 1px solid gray; height: 50%;"></div>
+          </div>
+        </div>
+        <div *ngIf="index !== 0">
+          <div class="time-slot" *ngFor=" let hour of hours">
+            <div style=" height: 50%;">
+            </div>
+            <div style="border-top: 1px solid gray; height: 50%;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </div>
 

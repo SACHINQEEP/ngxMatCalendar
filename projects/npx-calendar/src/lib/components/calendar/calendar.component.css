@@ -95,6 +95,12 @@
   border: 1px solid #000;
 }
 
+
+.time-slot {
+  height: 50px;
+  border-bottom: 1px solid #333;
+}
+
 .blank {
   background-color: transparent;
 }
@@ -605,4 +611,34 @@
 
 .close-btn:hover {
   opacity: 1;
+}
+
+
+.time-column {
+  display: grid;
+  flex-direction: column;
+  text-align: right;
+  font-weight: bold;
+}
+
+.calendar-week-days {
+  display: flex;
+  flex: 1;
+  border-left: 1px solid #444;
+}
+
+.calendar-week-day {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-right: 1px solid #444;
+}
+
+.time-slot {
+  border-bottom: 1px solid #333;
+  min-height: 120px;
+}
+
+.time-divider {
+  border-bottom: 1px solid #333;
 }

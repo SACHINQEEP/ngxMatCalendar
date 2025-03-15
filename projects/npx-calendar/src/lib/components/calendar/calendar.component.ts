@@ -21,7 +21,8 @@ export class CalendarComponent {
   public monthsOfTheYear: string[] = [
     "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
   ];
-
+  public hours: string[] = []
+  public currentWeekDays: number[] = []
   public years: number[] = []
   public viewOptions: string[] = ["Month", "Work week", "Week", "Day"];
   public daysInMonth: number[] = [];
@@ -35,7 +36,7 @@ export class CalendarComponent {
   public isOpen: boolean = false;
   public isMonthPickerOpen: boolean = false;
   public isFilterOpen: boolean = false;
-  public selectedView: number = 0;
+  public selectedView: number = 1;
   public isOffCanvasOpen = false;
   public weekDay: string | null = null;
   public selectedDay: number = 0;
@@ -171,6 +172,7 @@ export class CalendarComponent {
    */
   toggleMonthPicker(): void {
     this.isMonthPickerOpen = !this.isMonthPickerOpen;
+    this.getCurrentWeek(false)
   }
 
   /**
@@ -392,6 +394,29 @@ export class CalendarComponent {
     this.generateCalender();
   }
 
+  public getCurrentWeek(startFromMonday = false) {
+    const today = new Date();
+    const dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
+
+    // Adjust for Monday as the start of the week if needed
+    const weekStart = new Date(today);
+    weekStart.setDate(today.getDate() - dayOfWeek + (startFromMonday ? (dayOfWeek === 0 ? -6 : 1) : 0));
+
+    const weekDates = [];
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(weekStart);
+      date.setDate(weekStart.getDate() + i);
+      weekDates.push(date.getDate()); // Day of the month as 1, 2, 3, etc.
+    }
+
+    this.hours = Array.from({ length: 24 }, (_, i) => {
+      const suffix = i < 12 ? 'AM' : 'PM';
+      const hour = i % 12 === 0 ? 12 : i % 12;
+      return `${hour} ${suffix}`;
+    });
+
+    this.currentWeekDays = weekDates;
+  }
 
 
 
