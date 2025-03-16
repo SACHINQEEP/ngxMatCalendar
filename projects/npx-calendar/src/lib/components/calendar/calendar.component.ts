@@ -5,6 +5,7 @@ import { StyleObjectPipe } from '../../pips/style-object.pipe';
 
 
 
+
 @Component({
   selector: 'lib-calendar',
   imports: [CommonModule, StyleObjectPipe],
@@ -24,7 +25,7 @@ export class CalendarComponent {
   public hours: string[] = []
   public currentWeekDays: number[] = []
   public years: number[] = []
-  public viewOptions: string[] = ["Month", "Work week", "Week", "Day"];
+  public viewOptions: string[] = ["Month", "Work week"];
   public daysInMonth: number[] = [];
   public currentMonth: number = 0;
   public currentYear: number = 0;
@@ -36,7 +37,7 @@ export class CalendarComponent {
   public isOpen: boolean = false;
   public isMonthPickerOpen: boolean = false;
   public isFilterOpen: boolean = false;
-  public selectedView: number = 1;
+  public selectedView: number = 0;
   public isOffCanvasOpen = false;
   public weekDay: string | null = null;
   public selectedDay: number = 0;
@@ -418,6 +419,9 @@ export class CalendarComponent {
     this.currentWeekDays = weekDates;
   }
 
+  getEventHour(eventTime: string, extraMinutes: string): string {
+    return eventTime.split(" ")[0] + ":" + extraMinutes + ' ' + eventTime.split(" ")[1]; // Extract hour + AM/PM
+  }
 
 
 }

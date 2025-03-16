@@ -75,14 +75,6 @@
   }
 }
 
-/* .calendar-days {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 5px;
-  padding: 10px;
-  border: 1px solid #000;
-} */
-
 .calendar-day {
   text-align: left;
   padding: 10px;
@@ -115,6 +107,16 @@
   border: 1px solid #000;
   align-content: flex-start;
 }
+
+.current-day-in-weekdays {
+  background-color: #00000029;
+  color: white;
+  font-weight: bold;
+  align-content: center;
+  cursor: pointer;
+  align-content: flex-start;
+}
+
 
 .header {
   padding: 10px;
@@ -632,13 +634,30 @@
   flex-direction: column;
   flex: 1;
   border-right: 1px solid #444;
+
 }
 
 .time-slot {
   border-bottom: 1px solid #333;
   min-height: 120px;
+  padding: 5px;
+
 }
 
 .time-divider {
   border-bottom: 1px solid #333;
+}
+
+
+.week-events {
+  border: 1px dotted #000;
+  border-radius: 5px;
+  margin: 5px 0;
+  font-size: small;
+  overflow: hidden;
+  min-height: fit-content;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  width: 92%;
 }

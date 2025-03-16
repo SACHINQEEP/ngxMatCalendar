@@ -58,7 +58,7 @@
     <span *ngFor="let day of daysOfTheWeek" class="calendar-weekday">{{ day }}</span>
   </div>
   <div class="calendar-weekdays" *ngIf="viewOptions[selectedView] === 'Work week'">
-    <span *ngFor="let day of daysOfTheWeek and let index = index" class="calendar-weekday">
+    <span *ngFor="let day of daysOfTheWeek and let index = index" class="calendar-weekday" [class.current-day-in-weekdays]="currentWeekDays[index] === currentDay">
       <div>
         {{ day }}
       </div>
@@ -96,21 +96,73 @@
   </div>
 
   <div class="calendar-days" style="display: flex; margin: 0;" *ngIf="viewOptions[selectedView] === 'Work week'">
-
-    <!-- Calendar Days -->
     <div class="calendar-week-days" style="border: 1px solid #000;">
-      <div class="calendar-week-day" *ngFor="let day of currentWeekDays and let index=index">
+      <div class="calendar-week-day" *ngFor="let day of currentWeekDays and let index=index" [class.current-day-in-weekdays]="currentWeekDays[index] === currentDay">
+
         <div *ngIf="index === 0">
           <div class="time-slot" *ngFor="let hour of hours">
-            <div style=" height: 50%;">{{ hour }}</div>
-            <div style="border-top: 1px solid gray; height: 50%;"></div>
+            <div style="height: 100%;" *ngFor="let eventDetails of calendar_events">
+              <div style=" min-height: 50%;">
+                {{ hour }}
+                <div *ngIf="eventDetails.month - 1 === currentMonth">
+                  <div *ngFor="let list of eventDetails.list">
+                    <div *ngIf="list.day === day">
+                      <div *ngFor="let event of list.events and let index = index">
+                        <span class="week-events" *ngIf="event.time === getEventHour(hour, '00')" [ngStyle]="event.style | styleObject" #trigger (click)="openPopover($event, day, event)()">
+                          {{ event.title }} - {{ event.time }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="border-top: 1px solid rgba(128, 128, 128, 0.486); min-height: 50%;">
+                <div *ngIf="eventDetails.month - 1 === currentMonth">
+                  <div *ngFor="let list of eventDetails.list">
+                    <div *ngIf="list.day === day">
+                      <div *ngFor="let event of list.events and let index = index">
+                        <span class="week-events" *ngIf="event.time === getEventHour(hour, '30')" [ngStyle]="event.style | styleObject" #trigger (click)="openPopover($event, day, event)()">
+                          {{ event.title }} - {{ event.time }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
         <div *ngIf="index !== 0">
           <div class="time-slot" *ngFor=" let hour of hours">
-            <div style=" height: 50%;">
-            </div>
-            <div style="border-top: 1px solid gray; height: 50%;">
+            <div style="height: 100%;" *ngFor="let eventDetails of calendar_events">
+              <div style=" min-height: 50%;">
+                <span style="color: #fff;">{{ hour }}</span>
+                <div *ngIf="eventDetails.month - 1 === currentMonth">
+                  <div *ngFor="let list of eventDetails.list">
+                    <div *ngIf="list.day === day">
+                      <div *ngFor="let event of list.events and let index = index">
+                        <span class="week-events" *ngIf="event.time === getEventHour(hour, '00')" [ngStyle]="event.style | styleObject" #trigger (click)="openPopover($event, day, event)()">
+                          {{ event.title }} - {{ event.time }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="border-top: 1px solid rgba(128, 128, 128, 0.486); min-height: 50%;">
+                <div *ngIf="eventDetails.month - 1 === currentMonth">
+                  <div *ngFor="let list of eventDetails.list">
+                    <div *ngIf="list.day === day">
+                      <div *ngFor="let event of list.events and let index = index">
+                        <span class="week-events" *ngIf="event.time === getEventHour(hour, '30')" [ngStyle]="event.style | styleObject" #trigger (click)="openPopover($event, day, event)()">
+                          {{ event.title }} - {{ event.time }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
