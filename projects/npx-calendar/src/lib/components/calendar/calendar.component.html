@@ -98,7 +98,6 @@
   <div class="calendar-days" style="display: flex; margin: 0;" *ngIf="viewOptions[selectedView] === 'Work week'">
     <div class="calendar-week-days" style="border: 1px solid #000;">
       <div class="calendar-week-day" *ngFor="let day of currentWeekDays and let index=index" [class.current-day-in-weekdays]="currentWeekDays[index] === currentDay">
-
         <div *ngIf="index === 0">
           <div class="time-slot" *ngFor="let hour of hours">
             <div style="height: 100%;" *ngFor="let eventDetails of calendar_events">
