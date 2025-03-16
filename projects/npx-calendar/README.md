@@ -19,8 +19,8 @@
   - [📌 Changelog](#-changelog)
   - [📜 License](#-license)
   - [🤝 Contributing](#-contributing)
-  - [✨ Authors](#-authors)
   - [Report Issues](#report-issues)
+  - [✨ Authors](#-authors)
   - [🙌 Acknowledgments](#-acknowledgments)
 
 ## 📦 Installation
@@ -287,6 +287,7 @@ The `npx-calendar` component provides:
 - **0.0.1**: Initial release
 - **0.0.2**: Added event click support
 - **0.0.3**: Added event title, time, description, style, attendees, location, location link, category, and category color support
+- **0.0.4**: Added Week Calendar UI and Functinality
 
 ## 📜 License
 
@@ -296,13 +297,13 @@ This project is licensed under the MIT License.
 
 We welcome contributions! Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-## ✨ Authors
-
-Created by the **Sachin Patel**.
-
 ## Report Issues
 
 Found a bug? 🐛 Please open an issue [here](https://github.com/SACHINQEEP//issues).
+
+## ✨ Authors
+
+Created by the **Sachin Patel**.
 
 ## 🙌 Acknowledgments
 

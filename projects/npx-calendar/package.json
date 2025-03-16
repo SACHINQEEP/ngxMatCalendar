@@ -1,6 +1,6 @@
 {
   "name": "npx-calendar",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A customizable and feature-rich calendar component for Angular applications.",
   "peerDependencies": {
     "@angular/common": "^19.2.0",
