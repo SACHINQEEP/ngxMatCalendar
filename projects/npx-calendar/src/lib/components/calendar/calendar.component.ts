@@ -2,13 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { CalendarEvent, CalendarEventDetails, CalendarThemes } from '../../interface/calendar.interface';
 import { StyleObjectPipe } from '../../pips/style-object.pipe';
+import { FilterEventsPipe } from '../../pips/filter-events.pipe';
 
 
 
 
 @Component({
   selector: 'lib-calendar',
-  imports: [CommonModule, StyleObjectPipe],
+  imports: [CommonModule, StyleObjectPipe, FilterEventsPipe],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
 })

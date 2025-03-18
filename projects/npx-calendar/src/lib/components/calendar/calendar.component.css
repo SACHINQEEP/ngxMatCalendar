@@ -667,5 +667,17 @@
   text-overflow: ellipsis;
   display: block;
   width: 92%;
-  /* min-height: 30px; */
+  cursor: pointer;
+}
+
+.extra-week-events {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 2px;
+  margin: 5px 0;
+  font-size: small;
+  width: 92%;
+  cursor: pointer;
 }

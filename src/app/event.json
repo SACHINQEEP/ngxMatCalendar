@@ -24,6 +24,42 @@
             "categoryColor": "#1abc9c"
           },
           {
+            "time": "11:00 AM",
+            "title": "TPI Daily Meeting",
+            "start_time": "11:00 AM",
+            "end_time": "12:00 PM",
+            "description": "TPI Daily Meeting",
+            "style": "background-color: #001B4F; color: #fff;",
+            "attendees": [
+              {
+                "name": "John Doe",
+                "image": "https://randomuser.me/api/portraits/men/1.jpg"
+              }
+            ],
+            "location": "india",
+            "locationLink": "https://www.google.com/maps/search/india",
+            "category": "General",
+            "categoryColor": "#1abc9c"
+          },
+          {
+            "time": "11:00 AM",
+            "title": "TPI Daily Meeting",
+            "start_time": "11:00 AM",
+            "end_time": "12:00 PM",
+            "description": "TPI Daily Meeting",
+            "style": "background-color: #001B4F; color: #fff;",
+            "attendees": [
+              {
+                "name": "John Doe",
+                "image": "https://randomuser.me/api/portraits/men/1.jpg"
+              }
+            ],
+            "location": "india",
+            "locationLink": "https://www.google.com/maps/search/india",
+            "category": "General",
+            "categoryColor": "#1abc9c"
+          },
+          {
             "time": "11:30 AM",
             "title": "TPI Daily Meeting",
             "start_time": "11:00 AM",
