@@ -57,7 +57,7 @@
   <div class="calendar-weekdays" *ngIf="viewOptions[selectedView] === 'Month'">
     <span *ngFor="let day of daysOfTheWeek" class="calendar-weekday">{{ day }}</span>
   </div>
-  <div class="calendar-weekdays" *ngIf="viewOptions[selectedView] === 'Work week'">
+  <div class="calendar-weekdays" *ngIf="viewOptions[selectedView] === 'Work week' || viewOptions[selectedView] === 'Week'">
     <span *ngFor="let day of daysOfTheWeek and let index = index" class="calendar-weekday" [class.current-day-in-weekdays]="currentWeekDays[index] === currentDay">
       <div>
         {{ day }}
@@ -95,10 +95,9 @@
     </div>
   </div>
 
-  <div class="calendar-days" style="display: flex; margin: 0;" *ngIf="viewOptions[selectedView] === 'Work week'">
-    <div class="calendar-week-days" style="border: 1px solid #000;">
+  <div class="calendar-days" style="display: flex; margin: 0;" *ngIf="viewOptions[selectedView] === 'Work week' || viewOptions[selectedView] === 'Week'">
+    <div [ngClass]="viewOptions[selectedView] === 'Work week' ? 'calendar-week-days' : 'calendar-weekend-days'" style="border: 1px solid #000;">
       <div class="calendar-week-day" *ngFor="let day of currentWeekDays; let index = index" [class.current-day-in-weekdays]="currentWeekDays[index] === currentDay">
-
         <div class="time-slot" *ngFor="let hour of hours">
           <div style="height: 100%;" *ngFor="let eventDetails of calendar_events">
 

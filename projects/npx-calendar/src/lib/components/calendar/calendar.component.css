@@ -199,6 +199,7 @@
   border-radius: 8px;
   width: 100%;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .year-container {
@@ -242,6 +243,7 @@
   background: #000;
   border-radius: 8px;
   width: 100%;
+  z-index: 1;
 }
 
 .month {
@@ -625,6 +627,16 @@
 }
 
 .calendar-week-days {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-left: 1px solid #444;
+  height: 78vh;
+  overflow-y: scroll;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.calendar-weekend-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   border-left: 1px solid #444;

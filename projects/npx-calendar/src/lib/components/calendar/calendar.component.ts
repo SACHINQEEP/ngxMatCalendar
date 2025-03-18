@@ -26,7 +26,7 @@ export class CalendarComponent {
   public hours: string[] = []
   public currentWeekDays: number[] = []
   public years: number[] = []
-  public viewOptions: string[] = ["Month", "Work week"];
+  public viewOptions: string[] = ["Month", "Work week", "Week"];
   public daysInMonth: number[] = [];
   public currentMonth: number = 0;
   public currentYear: number = 0;
@@ -174,7 +174,6 @@ export class CalendarComponent {
    */
   toggleMonthPicker(): void {
     this.isMonthPickerOpen = !this.isMonthPickerOpen;
-    this.getCurrentWeek(false)
   }
 
   /**
@@ -343,6 +342,7 @@ export class CalendarComponent {
    */
   public onViewChange(view: number): void {
     this.selectedView = view;
+    this.getCurrentWeek(false)
   }
 
   /**
@@ -397,6 +397,9 @@ export class CalendarComponent {
   }
 
   public getCurrentWeek(startFromMonday = false) {
+    this.hours = []
+    this.currentWeekDays = []
+
     const today = new Date();
     const dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
 
@@ -417,7 +420,17 @@ export class CalendarComponent {
       return `${hour} ${suffix}`;
     });
 
-    this.currentWeekDays = weekDates;
+    console.log("weekDates", weekDates)
+
+    if (this.viewOptions[this.selectedView] === 'Work week') {
+      this.currentWeekDays = weekDates.slice(1, weekDates.length - 1)
+      this.daysOfTheWeek = this.daysOfTheWeek.slice(1, this.daysOfTheWeek.length - 1);
+    } else {
+      this.daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+      this.currentWeekDays = weekDates;
+    }
+
+    console.log(this.currentWeekDays, this.hours)
   }
 
   getEventHour(eventTime: string, extraMinutes: string): string {
