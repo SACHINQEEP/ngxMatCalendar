@@ -399,6 +399,7 @@ export class CalendarComponent {
   public getCurrentWeek(startFromMonday = false) {
     this.hours = []
     this.currentWeekDays = []
+    this.daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
     const today = new Date();
     const dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
@@ -426,7 +427,7 @@ export class CalendarComponent {
       this.currentWeekDays = weekDates.slice(1, weekDates.length - 1)
       this.daysOfTheWeek = this.daysOfTheWeek.slice(1, this.daysOfTheWeek.length - 1);
     } else {
-      this.daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
       this.currentWeekDays = weekDates;
     }
 

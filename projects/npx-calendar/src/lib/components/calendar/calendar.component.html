@@ -57,7 +57,7 @@
   <div class="calendar-weekdays" *ngIf="viewOptions[selectedView] === 'Month'">
     <span *ngFor="let day of daysOfTheWeek" class="calendar-weekday">{{ day }}</span>
   </div>
-  <div class="calendar-weekdays" *ngIf="viewOptions[selectedView] === 'Work week' || viewOptions[selectedView] === 'Week'">
+  <div [ngClass]="viewOptions[selectedView] === 'Work week' ? 'calendar-working-weekdays' : 'calendar-weekdays'" *ngIf="viewOptions[selectedView] === 'Work week' || viewOptions[selectedView] === 'Week'">
     <span *ngFor="let day of daysOfTheWeek and let index = index" class="calendar-weekday" [class.current-day-in-weekdays]="currentWeekDays[index] === currentDay">
       <div>
         {{ day }}
